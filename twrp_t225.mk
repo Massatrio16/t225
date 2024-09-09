@@ -17,6 +17,18 @@
 # Release name
 PRODUCT_RELEASE_NAME := t225
 
+
+
+
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
+
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+# Inherit some common Omni stuff.
+$(call inherit-product, vendor/twrp/config/common.mk)
+
+
+
 # Inherit from common AOSP config
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
@@ -27,11 +39,8 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 # Inherit device configuration
 $(call inherit-product, device/samsung/t225/device.mk)
 
-# Charger
-PRODUCT_PACKAGES += \
-    charger_res_images
 
-PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,device/samsung/t225/recovery/root,recovery/root)
+
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_NAME := twrp_t225
