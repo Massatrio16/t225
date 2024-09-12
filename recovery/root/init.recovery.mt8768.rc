@@ -1,3 +1,6 @@
+import /init.recovery.logd.rc
+
+
 on init
 
     setprop sys.usb.configfs 1
