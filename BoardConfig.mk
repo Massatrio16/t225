@@ -131,7 +131,7 @@ TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 # ADDING LOG
 TARGET_USES_LOGD := true
 TWRP_INCLUDE_LOGCAT := true
-TW_EVENT_LOGGING := true
+TWRP_EVENT_LOGGING := true
 
 
 #samsung configuration
@@ -144,7 +144,7 @@ TW_NO_LEGACY_PROPS := true
 TW_NO_BIND_SYSTEM := true
 
 ## TWRP-Specific configuration
-#TW_THEME := portrait_hdpi
+
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /dev/block/loop%d
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
@@ -166,9 +166,19 @@ TW_HAS_MTP := true
 TW_INCLUDE_RESETPROP := true
 
 
-
-
-
+TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libcppbor_external \
+        $(TARGET_OUT_SHARED_LIBRARIES)/libcppbor_external.so \
+     $(TARGET_OUT_SHARED_LIBRARIES)/libcppcose_rkp.so \
+        $(TARGET_OUT_SHARED_LIBRARIES)/libcppcose_rkp \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libskeymaster4device.so \
+        $(TARGET_OUT_SHARED_LIBRARIES)/libskeymaster4device \
+            $(TARGET_OUT_SHARED_LIBRARIES)/libsoft_attestation_cert.so \
+        $(TARGET_OUT_SHARED_LIBRARIES)/libsoft_attestation_cert \
+            $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster_helper \
+        $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster_helper.so \
+        
+        
 # Maintainer/Version
 TW_DEVICE_VERSION := Massatrio16
 

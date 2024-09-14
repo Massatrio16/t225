@@ -1,0 +1,3 @@
+
+logcat -d > /cache/logcat_twrp.txt
+cp -r /tmp/recovery.log /cache

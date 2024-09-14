@@ -1,3 +1,6 @@
+
+import /init.recovery.samsung.rc
+
 on init
 
     setprop sys.usb.configfs 1
@@ -47,7 +50,12 @@ service keymaster-4-0 /system/bin/android.hardware.keymaster@4.0-service
     disabled
     seclabel u:r:recovery:s0
 
-
+service log /system/bin/L
+    user root system
+    group root system
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
 
 
 on property:hwservicemanager.ready=true
@@ -67,6 +75,8 @@ on property:twrp.all.users.decrypted=true
     stop gatekeeper-1-0
 
 on boot
+install_keyring
 start gatekeeper-1-0
 start keymaster-4-0
+start log
 
